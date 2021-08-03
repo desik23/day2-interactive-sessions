@@ -73,3 +73,35 @@ ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
 
 ```
 
+### Higher order derivative
+
+```{r}
+
+gt <- expression(2.2 + 3.1 * t - 5.6 * t ^ 4)
+
+dg_dt <- D(expr = gt, 't')
+
+d2g_dt2 <- D(expr = dg_dt, 't')
+
+d2g_dt2
+
+```
+## Partial derivatives
+
+```{r}
+f_xyz <- expression(2*x*y - 3*(x^2)*(z^3))
+
+df_dx <- D(expr = f_xyz, 'x')
+
+df_dy <- D(expr = f_xyz, 'y')
+
+df_dz <- D(expr = f_xyz, 'z')
+
+
+df_dx
+df_dy
+df_dz
+
+```
+
+
