@@ -1,0 +1,75 @@
+---
+title: "Session 2b"
+author: "Desik Somasundaram"
+date: "8/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(palmerpenguins)
+```
+
+## Plot of function in 'ggplot2'
+
+```{r}
+
+eq <- function(x) {
+  
+  3 * x ^ 2 + 4
+  
+}
+
+# Use stat_function()
+
+ggplot(data.frame(x = c(1,100)), aes(x = x)) + stat_function(fun = eq)
+
+ggplot(data=NULL)+ stat_function(fun = eq) + xlim(min = -1, max = 100)
+
+```
+### Task
+
+Plot $f(x)=2.4-5x^3+2.1x^2$
+
+Over a range from -50 to 50
+
+## Plot of function in 'ggplot2'
+
+```{r}
+
+eq2 <- function(x) {
+  
+  2.4- (5 * x ^ 3) + (2.1 * x ^ 2)
+  
+}
+
+# Use stat_function()
+
+ggplot(data.frame(x = c(-50,50)), aes(x = x)) + stat_function(fun = eq2)
+
+
+```
+
+
+
+
+
+
+## 'penguins' body mass and flipper lengths
+
+### Basic ggplot scatterplot of body mass (y) and flipper length (x)
+
+```{r}
+
+ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) + 
+  geom_point(aes(color = species)) + 
+  scale_color_manual(values = c("purple", "green","red")) +
+  labs(x = "Flipper length (mm)", y = "Body mass (g)", 
+       title = "Palmer penguins size measurements", 
+       caption = "Data   collected by KB Gorman et al. at Palmer Station", color = "Species") + 
+  facet_wrap(~island) +
+  theme_light()
+
+```
+
